@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minimal ERC-20 DApp</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Ethers v6 UMD + fallback -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"
+    onerror="(function(){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/ethers.umd.min.js';document.head.appendChild(s);}())">
+  </script>
+
+  <!-- Your app (runs after ethers is available) -->
+  <script src="./app.js" defer></script>
+</head><body>
+  <main class="card">
+    <h1>Minimal ERC-20 DApp (Team 06)</h1>
+
+    <section class="row">
+      <button id="btn-connect">🔌 Connect Wallet</button>
+      <button id="btn-switch">🔁 Switch to DIDLab</button>
+      <button id="btn-refresh" disabled>🔄 Refresh</button>
+    </section>
+
+    <section class="grid">
+      <div class="box">
+        <h3>Network / Account</h3>
+        <div><b>Expected Chain:</b> 0x7a6e (31342)</div>
+        <div><b>RPC:</b> https://hh-06.didlab.org</div>
+        <div><b>Connected Chain:</b> <span id="chainId">—</span></div>
+        <div><b>Account:</b> <span id="account">—</span></div>
+      </div>
+
+      <div class="box">
+        <h3>Token</h3>
+        <label>Token Address
+          <input id="tokenAddress" placeholder="0x... ERC-20" />
+        </label>
+        <div class="two">
+          <button id="btn-load">📦 Load Token</button>
+          <button id="btn-add-asset" disabled>➕ Add to MetaMask</button>
+        </div>
+        <div><b>Name:</b> <span id="tName">—</span></div>
+        <div><b>Symbol:</b> <span id="tSymbol">—</span></div>
+        <div><b>Decimals:</b> <span id="tDecimals">—</span></div>
+      </div>
+
+      <div class="box">
+        <h3>Balance</h3>
+        <div><b>Balance:</b> <span id="balance">—</span></div>
+      </div>
+
+      <div class="box">
+        <h3>Transfer</h3>
+        <label>Recipient (0x…)
+          <input id="to" placeholder="0xRecipient" />
+        </label>
+        <label>Amount (human units)
+          <input id="amount" type="number" step="any" placeholder="e.g. 1.5" />
+        </label>
+        <button id="btn-transfer" disabled>🚀 Send</button>
+        <div class="muted" id="txInfo">—</div>
+      </div>
+    </section>
+
+    <section class="log" id="log">Ready.</section>
+  </main>
+</body>
+</html>
